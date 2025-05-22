@@ -72,8 +72,8 @@ jobs:
           file: ./Dockerfile
           platforms: linux/amd64,linux/arm64/v8
           tags: |
-            ghcr.io/avisi-cloud/${{ env.IMAGE_NAME }}:${{ github.ref_name }}
-            ghcr.io/avisi-cloud/${{ env.IMAGE_NAME }}:latest
+            ghcr.io/nhsdigital/${{ env.IMAGE_NAME }}:${{ github.ref_name }}
+            ghcr.io/nhsdigital/${{ env.IMAGE_NAME }}:latest
           labels: |
             org.opencontainers.image.title=${{ github.event.repository.name }}
             org.opencontainers.image.description=${{ github.event.repository.description }}
@@ -83,7 +83,7 @@ jobs:
             org.opencontainers.image.version=${{ github.ref_name }}
       - name: sign container image
         run: |
-          cosign sign --yes --key env://COSIGN_KEY ghcr.io/avisi-cloud/${{ env.IMAGE_NAME }}:${{ github.ref_name }}@${{ steps.build_push.outputs.digest }}
+          cosign sign --yes --key env://COSIGN_KEY ghcr.io/nhs-digital/${{ env.IMAGE_NAME }}:${{ github.ref_name }}@${{ steps.build_push.outputs.digest }}
         shell: bash
         env:
           COSIGN_KEY: ${{secrets.COSIGN_KEY}}
@@ -91,12 +91,12 @@ jobs:
 
       - name: Check images
         run: |
-          docker buildx imagetools inspect ghcr.io/avisi-cloud/${IMAGE_NAME}:${{ github.ref_name }}
-          docker pull ghcr.io/avisi-cloud/${IMAGE_NAME}:${{ github.ref_name }}
-          cosign verify --key cosign.pub ghcr.io/avisi-cloud/${IMAGE_NAME}:${{ github.ref_name }}
+          docker buildx imagetools inspect ghcr.io/nhsdigital/${IMAGE_NAME}:${{ github.ref_name }}
+          docker pull ghcr.io/nhsdigital/${IMAGE_NAME}:${{ github.ref_name }}
+          cosign verify --key cosign.pub ghcr.io/nhsdigital/${IMAGE_NAME}:${{ github.ref_name }}
       - uses: anchore/sbom-action@v0
         with:
-          image: ghcr.io/avisi-cloud/${{ env.IMAGE_NAME }}:${{ github.ref_name }}
+          image: ghcr.io/nhsdigital/${{ env.IMAGE_NAME }}:${{ github.ref_name }}
 
   create-draft-release:
     runs-on: ubuntu-latest

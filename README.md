@@ -100,14 +100,14 @@ Then to download our packaged image, consider the
 the version you wish to use. Then, in your terminal, execute the following:
 
 ```shell
-docker pull ghcr.io/avisi-cloud/structurizr-site-generatr
+docker pull ghcr.io/nhsdigital/structurizr-site-generatr
 ```
 
 Once downloaded, you can execute Structurizr Site Generatr via a temporary Docker container by executing the
 following in your terminal:
 
 ```shell
-docker run -it --rm ghcr.io/avisi-cloud/structurizr-site-generatr --help
+docker run -it --rm ghcr.io/nhsdigital/structurizr-site-generatr --help
 ```
 
 #### [Optional] Verify the Structurizr Site Generatr image with [CoSign](https://github.com/sigstore/cosign)
@@ -118,13 +118,13 @@ cat cosign.pub
 MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEzezKl0vAWSHosQ0JLEsDzNBd2nGm
 08KqX+imYqq2avlbH+ehprJFMqKK0/I/bY0q5W9hQC8SLzTRJ9Q5dB9UiQ==
 -----END PUBLIC KEY-----
-cosign verify --key cosign.pub ghcr.io/avisi-cloud/structurizr-site-generatr
+cosign verify --key cosign.pub ghcr.io/nhsdigital/structurizr-site-generatr
 ```
 
 Or by using the Github repo url:
 
 ```shell
- cosign verify --key https://github.com/avisi-cloud/structurizr-site-generatr ghcr.io/avisi-cloud/structurizr-site-generatr
+ cosign verify --key https://github.com/nhsdigital/structurizr-site-generatr ghcr.io/avisi-cloud/structurizr-site-generatr
  ```
 
 ## Usage
@@ -142,7 +142,7 @@ To learn about available commands, or parameters for individual commands, call S
 ```shell
 installed> structurizr-site-generatr --help
 
-   docker> docker run -it --rm ghcr.io/avisi-cloud/structurizr-site-generatr --help
+   docker> docker run -it --rm ghcr.io/nhsdigital/structurizr-site-generatr --help
 
 Usage: structurizr-site-generatr options_list
 Subcommands:
@@ -161,7 +161,7 @@ To query the version of Structurizr Site Generatr installed / used.
 ```shell
 installed> structurizr-site-generatr version
 
-   docker> docker run -it --rm ghcr.io/avisi-cloud/structurizr-site-generatr version
+   docker> docker run -it --rm ghcr.io/nhsdigital/structurizr-site-generatr version
 
 Structurizr Site Generatr v1.1.3
 ```
@@ -176,7 +176,7 @@ This is the primary use case of Structurizr Site Generatr -- to generate a websi
 ```shell
 installed> structurizr-site-generatr generate-site --workspace-file workspace.dsl --assets-dir assets
 
-   docker> docker run -it --rm -v c:/projects/c4:/var/model ghcr.io/avisi-cloud/structurizr-site-generatr generate-site --workspace-file workspace.dsl --assets-dir assets
+   docker> docker run -it --rm -v c:/projects/c4:/var/model ghcr.io/nhsdigital/structurizr-site-generatr generate-site --workspace-file workspace.dsl --assets-dir assets
 ```
 
 Here, the `--workspace-file` or `-w` parameter specifies the input
@@ -204,7 +204,7 @@ To explicitly name the branches that you want to build sites from you can use th
 
 ```shell
 structurizr-site-generatr generate-site
-    --git-url https://github.com/avisi-cloud/structurizr-site-generatr.git
+    --git-url https://github.com/nhsdigital/structurizr-site-generatr.git
     --workspace-file docs/example/workspace.dsl
     --assets-dir docs/example/assets
     --branches main,future,old
@@ -215,7 +215,7 @@ or you can choose to build all branches that are found in the repository and exc
 
 ```shell
 structurizr-site-generatr generate-site
-    --git-url https://github.com/avisi-cloud/structurizr-site-generatr.git
+    --git-url https://github.com/nhsdigital/structurizr-site-generatr.git
     --workspace-file docs/example/workspace.dsl
     --assets-dir docs/example/assets
     --all-branches
@@ -235,7 +235,7 @@ web server can be reviewed using the `--help` operator.
 ```shell
 installed> structurizr-site-generatr serve -w workspace.dsl
 
-   docker> docker run -it --rm -v c:/projects/c4:/var/model -p 8080:8080 ghcr.io/avisi-cloud/structurizr-site-generatr serve --workspace-file workspace.dsl --assets-dir assets
+   docker> docker run -it --rm -v c:/projects/c4:/var/model -p 8080:8080 ghcr.io/nhsdigital/structurizr-site-generatr serve --workspace-file workspace.dsl --assets-dir assets
 ```
 
 By default, a development web server will be started and accessible at http://localhost:8080/ (if available).
