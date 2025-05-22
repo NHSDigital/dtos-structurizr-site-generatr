@@ -285,15 +285,14 @@ a.navbar-item:hover {
     margin: 0;
 }
 
-.app-page-navigation-list--current {
-    border-bottom: 2px solid #005eb8;
-    text-decoration: none;
-}
-
 .app-page-navigation-list__item {
     padding-bottom: 4px;
     padding-top: 4px;
-    border-bottom: 2px solid #ffffff;
+    text-decoration: none;
+}
+
+.app-page-navigation-list--current {
+    border-bottom: 2px solid #005eb8;
     text-decoration: none;
 }
 
@@ -317,5 +316,9 @@ a.navbar-item:hover {
 }
 .app-page-navigation-list-nav__link:focus:hover,
 .app-page-navigation-list__link:focus:visited {
+    color: #212b32;
+}
+
+table th {
     color: #212b32;
 }

@@ -28,7 +28,7 @@ fun HTML.softwareSystemPage(viewModel: SoftwareSystemPageViewModel, block: FlowC
                 viewModel.tabs
                     .filter { it.visible }
                     .forEach {
-                        li(classes=if (it.link.active) "app-page-navigation-list--current" else "app-page-navigation-list__item") {
+                        li(classes="app-page-navigation-list__item " + if (it.link.active) "app-page-navigation-list--current" else "") {
                             link(it.link,"app-page-navigation-list-nav__link")
                         }
                     }

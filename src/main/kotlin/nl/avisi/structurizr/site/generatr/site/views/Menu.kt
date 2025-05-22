@@ -31,7 +31,7 @@ private fun NAV.softwareSystemsSection(viewModel: MenuViewModel, nestGroups: Boo
 private fun NAV.menuItemLinks(items: List<LinkViewModel>) {
     ul(classes = "nhsuk-list app-side-nav__list") {
         items.forEach {
-            li(classes=if (it.active) "app-side-nav__item--current" else "app-side-nav__item")  {
+            li(classes="app-side-nav__item " + if (it.active) "app-side-nav__item--current" else "")  {
                 link(it, "app-side-nav__link")
             }
         }

@@ -206,11 +206,11 @@ class AsciidocToHtmlTest : ViewModelTest() {
             <div class="imageblock content">
              <div class="content">
               <div>
-               <figure style="width: min(100%, 800px);" id="SystemLandscape">
+               <figure class="nhsuk-image" style="width: min(100%, 800px);" id="SystemLandscape">
                 <div>
                  <svg viewBox="0 0 800 900"></svg>
                 </div>
-                <figcaption>
+                <figcaption class="nhsuk-image__caption">
                  <a onclick="openSvgModal('SystemLandscape-modal', 'SystemLandscape-svg')">System Landscape Diagram</a>
                 </figcaption>
                </figure>
