@@ -5,8 +5,8 @@ import nl.avisi.structurizr.site.generatr.site.model.TableViewModel
 import nl.avisi.structurizr.site.generatr.site.model.CellWidth
 
 fun FlowContent.table(viewModel: TableViewModel) {
-    table (classes = "table is-fullwidth") {
-        thead {
+    table (classes = "nhsuk-table") {
+        thead( classes = "nhsuk-table__head") {
             viewModel.headerRows.forEach {
                 row(it)
             }
@@ -38,33 +38,24 @@ private fun TBODY.row(viewModel: TableViewModel.RowViewModel) {
 private fun TR.cell(viewModel: TableViewModel.CellViewModel) {
     when (viewModel) {
         is TableViewModel.TextCellViewModel -> {
-            val classes = when (viewModel.width) {
-                CellWidth.UNSPECIFIED -> null
-                CellWidth.ONE_TENTH -> "is-one-tenth"
-                CellWidth.ONE_FOURTH -> "is-one-fourth"
-                CellWidth.TWO_FOURTH -> "is-two-fourth"
-            }
-
-            var spanClasses = ""
-            if (viewModel.greyText) spanClasses += "has-text-grey "
-            if (viewModel.boldText) spanClasses += "has-text-weight-bold"
-
             if (viewModel.isHeader)
-                th(classes = classes) { span(classes = spanClasses) { +viewModel.title } }
+                th(classes = "nhsuk-table__header") {
+                    scope = ThScope.col
+                    +viewModel.title
+                }
             else
-                td(classes = classes) { span(classes = spanClasses) { +viewModel.title } }
+                td(classes = "nhsuk-table__cell") { +viewModel.title  }
         }
         is TableViewModel.LinkCellViewModel -> {
-            val classes = if (viewModel.boldText) "has-text-weight-bold" else null
             if (viewModel.isHeader)
-                th(classes = classes)  { link(viewModel.link) }
+                th(classes = "nhsuk-table__header")  { link(viewModel.link) }
             else
-                td(classes = classes)  { link(viewModel.link) }
+                td(classes = "nhsuk-table__cell")  { link(viewModel.link) }
         }
         is TableViewModel.ExternalLinkCellViewModel ->
             if (viewModel.isHeader)
-                th { externalLink(viewModel.link) }
+                th(classes = "nhsuk-table__header") { externalLink(viewModel.link) }
             else
-                td { externalLink(viewModel.link) }
+                td(classes = "nhsuk-table__cell") { externalLink(viewModel.link) }
     }
 }

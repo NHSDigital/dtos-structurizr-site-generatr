@@ -30,7 +30,7 @@ class SoftwareSystemHomePageViewModelTest : ViewModelTest() {
             .isEqualTo(
                 toHtml(
                     viewModel,
-                    "# Description${System.lineSeparator()}${softwareSystem.description}",
+                    "### Description${System.lineSeparator()}${softwareSystem.description}",
                     Format.Markdown,
                     svgFactory
                 )
