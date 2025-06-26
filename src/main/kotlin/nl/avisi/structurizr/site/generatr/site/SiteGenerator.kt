@@ -16,6 +16,8 @@ import java.util.concurrent.ConcurrentHashMap
 
 fun copySiteWideAssets(exportDir: File) {
     copySiteWideAsset(exportDir, "/css/style.css")
+    copySiteWideAsset(exportDir, "/nhsuk-frontend-9.6.3/css/nhsuk-9.6.3.min.css")
+    copySiteWideAsset(exportDir, "/nhsuk-frontend-9.6.3/js/nhsuk-9.6.3.min.js")
     copySiteWideAsset(exportDir, "/js/header.js")
     copySiteWideAsset(exportDir, "/js/svg-modal.js")
     copySiteWideAsset(exportDir, "/js/modal.js")
