@@ -27,9 +27,11 @@ private fun HTML.headFragment(viewModel: PageViewModel) {
         meta(name = "viewport", content = "width=device-width, initial-scale=1")
         title { +viewModel.pageTitle }
         link(rel = "stylesheet", href = viewModel.cdn.bulmaCss())
-        link(rel = "stylesheet", href = "https://service-manual.nhs.uk/css/main.css")
+        link(rel = "stylesheet", href = "../" + "/nhsuk-9.6.3.min.css".asUrlToFile(viewModel.url))
+        link(rel = "stylesheet", href = "../" + "/style.css".asUrlToFile(viewModel.url))
         link(rel = "stylesheet", href = "../" + "/style.css".asUrlToFile(viewModel.url))
         link(rel = "stylesheet", href = "./" + "/style-branding.css".asUrlToFile(viewModel.url))
+        script(type = ScriptType.textJavaScript, src = "../" + "/modal.js".asUrlToFile(viewModel.url)) { }
         script(type = ScriptType.textJavaScript, src = "../" + "/modal.js".asUrlToFile(viewModel.url)) { }
         script(type = ScriptType.textJavaScript, src = "../" + "/svg-modal.js".asUrlToFile(viewModel.url)) { }
         script(type = ScriptType.textJavaScript, src = viewModel.cdn.svgpanzoomJs()) { }

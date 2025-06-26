@@ -5,3 +5,4 @@ out
 *.md_
 .vscode
 bin
+.DS_Store
